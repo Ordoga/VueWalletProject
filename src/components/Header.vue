@@ -1,6 +1,9 @@
 <template>
     <div class="header">
         <div class="logo">Mister Bitcoin</div>
+        <div v-if="user" class="user-details">
+                {{user.name}}
+        </div>
         <div class="nav">
             <div>Home</div>
             <div>Contacts</div>
@@ -9,15 +12,18 @@
 </template>
 
 <script>
+import { userService } from '../services/userService'
+
 export default {
     data() {
         return {
-            
+            user : null
         }
     },
     methods: {
     },
     created() {
+        this.user = userService.getUser()
     },
     components: {
     }
