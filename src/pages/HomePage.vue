@@ -1,16 +1,31 @@
 <template>
-  Homepage
-  <div>{{ rate }}</div>
+  <div v-if="currRate" class="curr-rate">{{ currRate }}</div>
 </template>
 
 <script>
-import  { bitcoinService } from '../services/bitcoinService'
+import { bitcoinService } from '../services/bitcoinService'
+
+
 
 export default {
   data() {
     return {
-      currRate : -1
+      currRate : null
     }
+  },
+  methods: {
+  },
+  async created() {
+    this.currRate = await bitcoinService.getRate()
+    this.intervalId = setInterval(async () => {
+      console.log('updating...')
+      this.currRate = await bitcoinService.getRate()
+    }, 5000)
+  },
+  unmounted() {
+    clearInterval(this.intervalId)
+  },
+  components: {
   }
 }
 </script>

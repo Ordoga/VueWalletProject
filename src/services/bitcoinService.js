@@ -7,9 +7,10 @@ export const bitcoinService = {
 }
 
 async function getRate() {
-    const currRate = await axios.get(
+    const { data: currRate } = await axios.get(
         "https://blockchain.info/tobtc?currency=USD&value=1"
     )
+    return currRate
 }
 
 function getMarketPriceHistory() {}
