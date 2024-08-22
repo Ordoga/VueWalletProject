@@ -16,11 +16,13 @@ export default {
   methods: {
   },
   async created() {
-    this.currRate = await bitcoinService.getRate()
-    this.intervalId = setInterval(async () => {
-      console.log('updating...')
-      this.currRate = await bitcoinService.getRate()
-    }, 5000)
+    // this.currRate = await bitcoinService.getRate()
+    // this.intervalId = setInterval(async () => {
+    //   console.log('updating...')
+    //   this.currRate = await bitcoinService.getRate()
+    // }, 20000)
+
+    this.currRate = 0.000234
   },
   unmounted() {
     clearInterval(this.intervalId)
