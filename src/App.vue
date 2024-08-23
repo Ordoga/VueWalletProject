@@ -8,9 +8,9 @@ import Footer from './components/Footer.vue';
 <template>
   <div class="app">
     <Header/>
-    <main>
-        <RouterView />
-    </main>
+
+    <RouterView />
+    
     <Footer/>
   </div>
 </template>

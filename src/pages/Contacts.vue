@@ -1,6 +1,6 @@
 <template>
-    <div class="contacts-page">
-        <div class="contacts-title">Contacts</div>
+    <div class="contacts-page page">
+        <!-- <div class="contacts-title">Contacts</div> -->
         <ContactList v-if="contacts" :contacts="contacts" />
     </div>
 </template>
@@ -27,5 +27,7 @@ export default {
 </script>
 
 <style scoped>
-
+.contacts-page{
+    width:100%;
+}
 </style>

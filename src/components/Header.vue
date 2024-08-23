@@ -43,7 +43,7 @@ export default {
     justify-content: space-between;
     align-items: center;
 
-    width: 100vw;
+    width: 100%;
     height: 3rem;
 
     padding-right: 1.2rem;
@@ -58,6 +58,13 @@ export default {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
+
+        @media (max-width: 620px){
+            position: relative;
+            left:0%;
+            transform:none;
+            justify-self:center;
+        }
     }
 
     .logo{
