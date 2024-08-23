@@ -1,6 +1,7 @@
 <template>
     <div class="contact-preview">
-        <img src="https://robohash.org/{{ contact._id }}?set=set4" alt="" />
+        <div class="name">{{ contact.name }}</div>
+        <img :src="`https://robohash.org/${ contact.name }?set=set4`" alt="" />
     </div>
 </template>
 
@@ -18,13 +19,18 @@ export default {
 <style lang="scss">
 
 .contact-preview {
-
     display:flex;
-    justify-content:center;
-    
+    flex-direction: column;
+    align-items:center;
+    gap: 16px;
+
+    & .name{
+        font-size:1.2rem;
+    }
 
     & img{
-        height: 50px;
+        height: 100px;
+        aspect-ratio: 3/3.5;
     }
 
 }
