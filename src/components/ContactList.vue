@@ -5,7 +5,7 @@
                 <div class="card-content">
                     <ContactPreview :contact="contact" />
                     <div class="actions">
-                        <RounterLink :to="`/contact/${contact._id}`"><button class="btn-details btn">Details</button></RounterLink>
+                        <RouterLink :to="`/contact/${contact._id}`"><button class="btn-details btn">Details</button></RouterLink>
                         <button @click="onDeleteContact(contact._id)" class="btn-delete btn">Delete</button>
                     </div>
                 </div>

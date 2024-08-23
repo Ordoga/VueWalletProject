@@ -7,7 +7,7 @@
         </div>
         <nav class="nav">
             <RouterLink to="/">Home</RouterLink>
-            <RouterLink to="/contacts">Contacts</RouterLink>
+            <RouterLink to="/contact">Contacts</RouterLink>
             <RouterLink to="/statistics">Statistics</RouterLink>
         </nav>
     </div>
@@ -58,6 +58,10 @@ export default {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
+
+        display:flex;
+        flex-direction: column;
+        align-items: center;
 
         @media (max-width: 620px){
             position: relative;
