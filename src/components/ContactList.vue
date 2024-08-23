@@ -1,6 +1,6 @@
 <template>
     <section class="contact-list">
-        <ul class="contact-card-grid">
+        <TransitionGroup class="contact-card-grid" name="list" tag="ul">
             <li class="contact-card" v-for="contact in contacts" :key="contact._id">
                 <div class="card-content">
                     <ContactPreview :contact="contact" />
@@ -10,7 +10,7 @@
                     </div>
                 </div>
             </li>
-        </ul>
+        </TransitionGroup>
     </section>
 </template>
 
@@ -163,6 +163,26 @@ ul {
     left: 0;
     right: 0;
     bottom: 0; */
+}
+
+
+
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.7s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+//   transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
 }
 
 </style>

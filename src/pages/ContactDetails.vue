@@ -1,5 +1,5 @@
 <template>
-    <section v-if="contact" class="contact-details">
+    <section v-if="contact" class="contact-details page">
         <div>{{ contact.name }}</div>
         <div>{{ contact.email }}</div>
     </section>

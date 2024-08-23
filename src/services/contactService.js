@@ -87,7 +87,6 @@ const contacts = [
     },
     {
         _id: "5a56640298ab77236845b82b",
-
         name: "Glenna Santana",
         email: "glennasantana@renovize.com",
         phone: "+1 (860) 467-2376",
@@ -160,7 +159,6 @@ function deleteContact(id) {
         if (index !== -1) {
             contacts.splice(index, 1)
         }
-
         resolve(contacts)
     })
 }

@@ -8,9 +8,28 @@ html, body {
     background-color: rgb(6, 54, 83);
   }
 
+html {
+  overflow-y: scroll;
+
+}
+
 .page{
     box-sizing: border-box;
     padding-top:20px;
     padding-left: 100px;
     padding-right: 100px;
 }
+
+a {
+  text-decoration: none; /* Remove the underline */
+  color: rgb(6, 54, 83); /* Set the desired color */
+}
+
+a:hover {
+  color: #9de6ff; /* Change color on hover */
+}
+
+.router-link-active{
+  color:white;
+}
+

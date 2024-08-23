@@ -17,9 +17,12 @@ export default {
     },
     methods: {
         async deleteContact(contactId){
-            await contactService.deleteContact(contactId)
+            // TODO : Fix Bug
+            // Same Bug As Dolevs - deletes two if in correct order
             const idx = this.contacts.findIndex(contact => contact._id === contactId)
             this.contacts.splice(idx,1)
+
+            await contactService.deleteContact(contactId)
         }
     },
     async created() {

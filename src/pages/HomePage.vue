@@ -1,5 +1,7 @@
 <template>
-  <div v-if="currRate" class="curr-rate">{{ currRate }}</div>
+  <div class="homepage page">
+    <div v-if="currRate" class="curr-rate">{{ currRate }}</div>
+  </div>
 </template>
 
 <script>
