@@ -2,12 +2,14 @@
     <div class="header">
         <div class="logo">Mister Bitcoin</div>
         <div v-if="user" class="user-details">
-                {{user.name}}
+                <div class="user-name"> {{user.name}} </div>
+                <div class="user-balance"> {{user.balance}} </div>
+                
         </div>
-        <div class="nav">
-            <div>Home</div>
-            <div>Contacts</div>
-        </div>
+        <nav class="nav">
+            <RouterLink to="/">Home</RouterLink>
+            <RouterLink to="/contacts">Contacts</RouterLink>
+        </nav>
     </div>
 </template>
 
@@ -21,6 +23,9 @@ export default {
         }
     },
     methods: {
+    },
+    computed: {
+
     },
     created() {
         this.user = userService.getUser()
