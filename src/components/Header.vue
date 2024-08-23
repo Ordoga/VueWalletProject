@@ -4,11 +4,11 @@
         <div v-if="user" class="user-details">
                 <div class="user-name"> {{user.name}} </div>
                 <div class="user-balance"> {{user.balance}} </div>
-                
         </div>
         <nav class="nav">
             <RouterLink to="/">Home</RouterLink>
             <RouterLink to="/contacts">Contacts</RouterLink>
+            <RouterLink to="/statistics">Statistics</RouterLink>
         </nav>
     </div>
 </template>
@@ -54,6 +54,12 @@ export default {
     background-color: rgb(13, 113, 160);
     color: white;
 
+    .user-details{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     .logo{
         justify-self: flex-start;
     }
@@ -62,8 +68,6 @@ export default {
         justify-self: flex-end;
         display: flex;
         gap: 1rem;
-
-
     }
 }
 </style>
