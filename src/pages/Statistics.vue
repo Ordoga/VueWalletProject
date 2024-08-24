@@ -1,6 +1,5 @@
 <template>
     <div v-if="marketPriceHistory" class="statistics-page page">
-        {{  formattedData }}
         <LineChart
             :data="formattedData"
         />
@@ -14,7 +13,7 @@ import { bitcoinService } from '../services/bitcoinService.js'
 export default {
     data() {
         return {
-            marketPriceHistory: null
+            marketPriceHistory: null,
         }
     },
     methods: {
@@ -32,7 +31,7 @@ export default {
             const prices = []
             values = values.map((xyObj) => {
                 const date = new Date(xyObj.x * 1000)   
-                const day = String(date.getDay()).padStart(2, '0');
+                const day = String((date.getDay()) + 1).padStart(2, '0');
                 const month = String(date.getMonth() + 1).padStart(2, '0');
                 dates.push(`${day}/${month}`)
                 prices.push(xyObj.y)

@@ -4,7 +4,6 @@ export const bitcoinService = {
     getRate,
     getMarketPriceHistory,
     getAvgBlockSize,
-    getMarketPriceHistorySync,
 }
 
 async function getRate() {
@@ -150,10 +149,6 @@ const marketPriceHistory = {
 
 async function getMarketPriceHistory() {
     return Promise.resolve(marketPriceHistory)
-}
-
-function getMarketPriceHistorySync() {
-    return marketPriceHistory
 }
 
 async function getAvgBlockSize() {}
