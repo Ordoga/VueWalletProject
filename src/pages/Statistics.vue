@@ -63,4 +63,13 @@ export default {
 
 <style scoped>
 
+.statistics-page{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 500px);
+    grid-auto-rows: 1fr;
+    column-gap: 60px;
+    justify-content: center;
+}
+
 </style>

@@ -39,5 +39,8 @@ export default {
 .chart-container{
     width: 500px;
     margin: 16px;   
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>
