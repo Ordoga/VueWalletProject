@@ -1,7 +1,9 @@
 <template>
-    <Line
-        :data="data"
-    />
+    <div class="chart-container">
+        <Line
+            :data="data"
+        />
+    </div>
 
 </template>
 
@@ -34,5 +36,8 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-
+.chart-container{
+    width: 500px;
+    margin: 16px;   
+}
 </style>
