@@ -25,7 +25,7 @@ export default {
     methods: {
     },
     computed: {
-
+        
     },
     created() {
         this.user = userService.getUser()
