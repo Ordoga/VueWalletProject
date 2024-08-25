@@ -21,13 +21,14 @@ export default {
             this.$store.dispatch({ type:'removeContact', contactId})
         },
         async applyFilter(filterBy){
-            this.contacts = await contactService.getContacts(filterBy)
+            this.$store.dispatch({ type : 'loadContacts', filterBy})
+            // this.contacts = await contactService.getContacts(filterBy)
         }
 
     },
     async created() {
         this.$store.dispatch({ type : 'loadContacts'})
-        
+
     },
     computed: {
         contacts(){

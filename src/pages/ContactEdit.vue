@@ -1,6 +1,6 @@
 <template>
     <section class="contact-edit-page page">
-        <form v-if="contact" @submit="onSaveContact">
+        <form v-if="contact" @submit.prevent="onSaveContact">
             <input v-model="contact.name" name="name" placeholder="Name"/>
             <input v-model="contact.phone" name="phone" placeholder="Phone"/>
             <input v-model="contact.email" name="email" placeholder="Email"/>
@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         async onSaveContact(){
-            await contactService.saveContact(this.contact)
+            this.$store.dispatch({type:'saveContact', contactToSave : this.contact})
             this.$router.push('/contact')
         }
     },
@@ -27,14 +27,13 @@ export default {
         const { id : contactId} = this.$route.params
         
         if(contactId){
-            this.contact = await contactService.getContactById(contactId)
+            const contact = await contactService.getContactById(contactId)
+            // Creates Copy to not mutate store directly
+            this.contact = {...contact}
         }else{
             this.contact = contactService.getEmptyContact()
         }
-        console.log(this.contact)
     },
-    components: {
-    }
 }
 </script>
 
