@@ -2,7 +2,7 @@
     <section v-if="contact" class="contact-details-page page">
         <div class="contact-details">
             <div class="contact-name">{{ contact.name }}</div>
-            <img :src="`https://robohash.org/${ contact.name }?set=set4`">
+            <img :src="`https://robohash.org/${ contact._id }?set=set4`">
             <div class="email-phone">
                 <div class="contact-email">{{ contact.email }}</div>
                 <div class="contact-phone">{{ contact.phone }}</div>

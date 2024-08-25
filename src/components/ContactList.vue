@@ -6,6 +6,7 @@
                     <ContactPreview :contact="contact" />
                     <div class="actions">
                         <RouterLink :to="`/contact/${contact._id}`"><button class="btn-details btn">Details</button></RouterLink>
+                        <RouterLink :to="`/contact/edit/${contact._id}`"><button class="btn-edit btn">Edit</button></RouterLink>
                         <button @click="onDeleteContact(contact._id)" class="btn-delete btn">Delete</button>
                     </div>
                 </div>
@@ -58,7 +59,7 @@ ul {
 
 .contact-card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     grid-auto-rows: 1fr;
     gap: 10px;
     grid-auto-flow: dense;
@@ -68,7 +69,7 @@ ul {
 
 .contact-card {
     position: relative;
-    aspect-ratio: 2/2.5;
+    aspect-ratio: 2/2.2;
     
     background: linear-gradient(142deg,rgb(118, 232, 255) 0%, rgba(0,212,255,1) 70%);
     

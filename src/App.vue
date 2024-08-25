@@ -1,5 +1,4 @@
 <script setup>
-import HomePage from './pages/HomePage.vue'
 import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
 

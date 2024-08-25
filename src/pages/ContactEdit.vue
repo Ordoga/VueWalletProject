@@ -1,60 +1,56 @@
 <template>
-    <div class="contacts-page page">
-        <div class="filter-container">
-            <RouterLink to="contact/edit"><button class="btn">Add Contact</button></RouterLink>
-            <ContactFilter @filter="applyFilter"/>
-        </div>
-        <ContactList @delete="deleteContact" v-if="contacts" :contacts="contacts" />
-    </div>
+    <section class="contact-edit-page page">
+        <form v-if="contact" @submit="onSaveContact">
+            <input v-model="contact.name" name="name" placeholder="Name"/>
+            <input v-model="contact.phone" name="phone" placeholder="Phone"/>
+            <input v-model="contact.email" name="email" placeholder="Email"/>
+            <button class="btn">{{ contact._id ? 'Save Changes' : 'Save' }}</button>
+        </form>
+    </section>
 </template>
 
 <script>
-import ContactFilter from '../components/ContactFilter.vue'
-import ContactList from '../components/ContactList.vue'
 import { contactService } from '../services/contactService'
-
 export default {
     data() {
         return {
-            contacts : null
+            contact : null
         }
     },
     methods: {
-        async deleteContact(contactId){
-            // TODO : Fix Bug
-            // Same Bug As Dolevs - deletes two if in correct order
-            const idx = this.contacts.findIndex(contact => contact._id === contactId)
-            this.contacts.splice(idx,1)
-
-            await contactService.deleteContact(contactId)
-        },
-        async applyFilter(filterBy){
-            this.contacts = await contactService.getContacts(filterBy)
+        async onSaveContact(){
+            await contactService.saveContact(this.contact)
+            this.$router.push('/contact')
         }
-
     },
     async created() {
-        this.contacts = await contactService.getContacts()
+        const { id : contactId} = this.$route.params
+        
+        if(contactId){
+            this.contact = await contactService.getContactById(contactId)
+        }else{
+            this.contact = contactService.getEmptyContact()
+        }
+        console.log(this.contact)
     },
     components: {
-        ContactList,
-        ContactFilter
     }
 }
 </script>
 
-<style lang="scss" scoped>
-.contacts-page{
-    width:100%;
-    display:flex;
+<style lang='scss' scoped>
+
+form {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 16px;
 }
 
-.filter-container{
-    align-self:center;
-    margin-bottom:16px;
-    display:flex;
-    gap: 16px;
+input {
+    padding: 10px 16px;
+    border-radius: 8px;
+    background-color: rgb(186, 244, 255);
 }
 
 .btn {
@@ -124,4 +120,5 @@ export default {
     background: none;
     }
 }
+
 </style>
