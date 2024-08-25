@@ -49,7 +49,7 @@ export default {
     },
     computed: {
         usdBalance(){
-            return (this.user.balance / this.currBitcoinRate).toFixed(2)
+            return (this.user.balance / this.currBitcoinRate).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
         }
     },
     async created() {
@@ -59,7 +59,6 @@ export default {
         this.intervalId = setInterval(async () => {
             this.refresh()
             this.currBitcoinRate = await bitcoinService.getRate()
-        
         }, 10000)
     },
     unmounted() {

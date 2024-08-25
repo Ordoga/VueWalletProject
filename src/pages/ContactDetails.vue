@@ -28,14 +28,10 @@ export default {
             contact : null
         }
     },
-    methods: {
-    },
     async created() {
         const { id : contactId } = this.$route.params
         this.contact = await contactService.getContactById(contactId)
     },
-    components: {
-    }
 }
 </script>
 

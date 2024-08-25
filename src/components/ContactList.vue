@@ -25,17 +25,10 @@ export default {
             required: true,
         }
     },
-    data() {
-        return {
-            
-        }
-    },
     methods: {
         onDeleteContact(contactId){
             this.$emit('delete',contactId)
         }
-    },
-    created() {
     },
     components: {
         ContactPreview
@@ -78,8 +71,6 @@ ul {
     
     &:hover{
         background: linear-gradient(142deg,rgb(118, 232, 255) 0%, rgb(137, 235, 255) 70%);
-
-        // box-shadow: 8px 8px 8px 8px rgba(255, 255, 255, 0.2), 8px 8px rgba(14, 211, 255, 0.35);
     }
 }
 
@@ -90,11 +81,7 @@ ul {
     gap:16px;
     height: 100%;
     justify-content: space-around;
-    /* position: absolute; */
-    /* top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0; */
+
 }
 
 

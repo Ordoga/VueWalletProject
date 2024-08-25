@@ -1,7 +1,7 @@
 <template>
     <div class="contact-preview">
         <div class="name">{{ contact.name }}</div>
-        <img :src="`https://robohash.org/${ contact._id }?set=set4`" alt="" />
+        <img :src="`https://robohash.org/${ contact._id }?set=set4`"/>
     </div>
 </template>
 

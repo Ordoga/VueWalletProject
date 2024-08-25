@@ -19,16 +19,6 @@ export default {
             required: true,
         }
     },
-    data() {
-        return {
-            
-        }
-    },
-    methods: {
-    },
-    created() {
-
-    },
     components: {
         Line
     }

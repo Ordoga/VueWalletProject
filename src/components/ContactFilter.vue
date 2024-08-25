@@ -16,10 +16,6 @@ export default {
             this.$emit('filter', this.filterBy)
         }
     },
-    created() {
-    },
-    components: {
-    }
 }
 </script>
 

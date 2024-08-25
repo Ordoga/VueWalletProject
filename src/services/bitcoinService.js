@@ -2,6 +2,7 @@ import axios from "axios"
 
 export const bitcoinService = {
     getRate,
+    getCryptoUsdRates,
     getMarketPriceHistory,
     getAvgBlockSize,
     getTransactionRate,
@@ -12,6 +13,13 @@ async function getRate() {
         "https://blockchain.info/tobtc?currency=USD&value=1"
     )
     return currRate
+}
+
+async function getCryptoUsdRates() {
+    const { data } = await axios.get(
+        "https://api.coinbase.com/v2/exchange-rates?currency=usd"
+    )
+    return data.data.rates
 }
 
 async function getMarketPriceHistory() {

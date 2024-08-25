@@ -11,18 +11,14 @@
 <script>
 import ContactFilter from '../components/ContactFilter.vue'
 import ContactList from '../components/ContactList.vue'
-import { contactService } from '../services/contactService'
 
 export default {
     methods: {
         async deleteContact(contactId){
-            // TODO : Fix Bug
-            // Same Bug As Dolevs - deletes two if in correct order
             this.$store.dispatch({ type:'removeContact', contactId})
         },
         async applyFilter(filterBy){
             this.$store.dispatch({ type : 'loadContacts', filterBy})
-            // this.contacts = await contactService.getContacts(filterBy)
         }
 
     },

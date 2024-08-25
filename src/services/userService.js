@@ -4,8 +4,8 @@ export const userService = {
 
 function getUser() {
     return {
-        name: "Puki Ben David",
-        balance: 100,
+        name: "Or Doga",
+        balance: 41.152,
         transactions: [],
     }
 }
