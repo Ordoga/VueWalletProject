@@ -10,7 +10,8 @@
         </div>
         
         <div class="actions">
-            <RouterLink to="/contact">Back</RouterLink>
+            <RouterLink class="link-txt" to="/contact">Back</RouterLink>
+            <RouterLink class="link-txt" :to="`/contact/edit/${contact._id}`">Edit Contact</RouterLink>
         </div>
     </section>
 
@@ -67,6 +68,22 @@ export default {
         align-items: center;
         gap: 8px;
     }
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.link-txt {
+    font-size: 1.2rem;
+    width: 140px;
+    display:flex;
+    justify-content: center;
+
+
 }
 
 a {
