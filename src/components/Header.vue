@@ -3,7 +3,21 @@
         <div class="logo">Mister Bitcoin</div>
         <div v-if="user" class="user-details">
                 <div class="user-name"> {{user.name}} </div>
-                <div class="user-balance"> {{user.balance}} </div>
+                <div class="user-balance"> 
+                    <span class="curr-balance">
+                        <img class="currency-logo" src="/btc.png">
+                        <span class="curr-text">
+                            {{user.balance}}
+                        </span>
+                    </span>
+                    <span class="curr-balance">
+                        <img class="currency-logo" src="/usd.png">
+                        <span class="curr-text" :class="{ 'refreshed' : isRefreshed}">
+                            {{ usdBalance }}
+                        </span>
+                        <div class="live">LIVE</div>
+                    </span>
+                </div>
         </div>
         <nav class="nav">
             <RouterLink to="/">Home</RouterLink>
@@ -15,20 +29,41 @@
 
 <script>
 import { userService } from '../services/userService'
+import { bitcoinService } from '../services/bitcoinService'
 
 export default {
     data() {
         return {
-            user : null
+            user : null,
+            currBitcoinRate : null,
+            isRefreshed: false
         }
     },
     methods: {
+        refresh(){
+            this.isRefreshed = true
+            setTimeout(() => {
+                this.isRefreshed = false
+            },1000)
+        }
     },
     computed: {
-        
+        usdBalance(){
+            return (this.user.balance / this.currBitcoinRate).toFixed(2)
+        }
     },
-    created() {
+    async created() {
         this.user = userService.getUser()
+        this.currBitcoinRate = await bitcoinService.getRate()
+        
+        this.intervalId = setInterval(async () => {
+            this.refresh()
+            this.currBitcoinRate = await bitcoinService.getRate()
+        
+        }, 10000)
+    },
+    unmounted() {
+        clearInterval(this.intervalId)
     },
     components: {
     }
@@ -36,6 +71,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.currency-logo{
+    width: 20px;
+}
 
 .header{
     justify-self: flex-start;
@@ -69,6 +108,30 @@ export default {
             transform:none;
             justify-self:center;
         }
+    }
+    .refreshed {
+                background-color: #3eff6e;
+                color:#00923f;
+                border-radius: 4px;
+    }
+
+    .user-balance{
+        display: flex;
+        gap: 16px;
+
+
+        & .curr-balance{
+            display: flex;
+            gap:4px;
+        }
+    }
+
+    .live{
+        font-size: 0.5rem;
+        background-color: #00923f;
+        height: min-content;
+        padding: 1.5px 4px;
+        border-radius: 4px;
     }
 
     .logo{

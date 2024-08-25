@@ -12,19 +12,12 @@ import { bitcoinService } from '../services/bitcoinService'
 export default {
   data() {
     return {
-      currRate : null
     }
   },
   methods: {
   },
   async created() {
-    // this.currRate = await bitcoinService.getRate()
-    // this.intervalId = setInterval(async () => {
-    //   console.log('updating...')
-    //   this.currRate = await bitcoinService.getRate()
-    // }, 20000)
 
-    this.currRate = 0.000234
   },
   unmounted() {
     clearInterval(this.intervalId)
