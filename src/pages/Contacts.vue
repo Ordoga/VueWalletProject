@@ -1,8 +1,8 @@
 <template>
     <div class="contacts-page page">
-        <div class="filter-container">
+        <div class="actions">
             <RouterLink to="contact/edit"><button class="btn">Add Contact</button></RouterLink>
-            <ContactFilter @filter="applyFilter"/>
+            <ContactFilter class="search" @filter="applyFilter"/>
         </div>
         <ContactList @delete="deleteContact" v-if="contacts" :contacts="contacts" />
     </div>
@@ -44,20 +44,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .contacts-page{
     width:100%;
     display:flex;
     flex-direction: column;
 }
 
-.filter-container{
-    align-self:center;
+.actions{
+    width: 100%;
     margin-bottom:16px;
     display:flex;
     gap: 16px;
+    justify-content: center;
+}
+
+.search{
+    justify-self:center;
 }
 
 .btn {
+    align-self: flex-start;
   appearance: button;
   background-color: #1899D6;
   border: solid transparent;

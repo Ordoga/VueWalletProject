@@ -1,7 +1,7 @@
 <template>
-    <section>
+    <div class="search">
         <input @input="onFilterBy" type="text" v-model="filterBy.term" placeholder="Search"/>
-    </section>
+    </div>
 </template>
 
 <script>
